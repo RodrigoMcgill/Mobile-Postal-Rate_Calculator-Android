@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:id="@+id/layout">
+    android:id="@+id/layout"
+    android:background="@drawable/mcgill">
 
     <Button
         android:layout_width="wrap_content"
@@ -13,23 +14,25 @@
         android:id="@+id/buttonCalculate"
         android:layout_row="0"
         android:layout_column="0"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="59dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick" />
 
     <Spinner
         android:layout_width="148dp"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner1"
+        android:id="@+id/spinnerSource"
         android:layout_row="0"
         android:layout_column="0"
         android:layout_marginTop="84dp"
-        android:spinnerMode="dialog" />
+        android:spinnerMode="dialog"
+        android:background="#fefef5" />
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner1"
+        android:layout_below="@+id/spinnerSource"
         android:layout_alignRight="@+id/buttonCalculate"
         android:layout_alignEnd="@+id/buttonCalculate"
         android:layout_marginRight="39dp"
@@ -42,13 +45,14 @@
     <Spinner
         android:layout_width="153dp"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerDest"
         android:layout_row="0"
         android:layout_column="0"
         android:spinnerMode="dialog"
         android:layout_above="@+id/gridLayout3"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="#f9f6ff" />
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -57,7 +61,7 @@
         android:layout_toStartOf="@+id/buttonCalculate"
         android:layout_marginRight="39dp"
         android:layout_marginEnd="39dp"
-        android:layout_above="@+id/spinner2"
+        android:layout_above="@+id/spinnerDest"
         android:id="@+id/gridLayout">
 
     </GridLayout>
@@ -86,51 +90,50 @@
         android:text="Destination"
         android:id="@+id/textView2"
         android:layout_alignBottom="@+id/gridLayout"
-        android:layout_alignLeft="@+id/spinner2"
-        android:layout_alignStart="@+id/spinner2" />
+        android:layout_alignLeft="@+id/spinnerDest"
+        android:layout_alignStart="@+id/spinnerDest" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextw"
+        android:id="@+id/editTextW"
         android:layout_alignBottom="@+id/gridLayout3"
         android:layout_alignLeft="@+id/linearLayout"
         android:layout_alignStart="@+id/linearLayout"
+        android:hint="Width"
         android:layout_alignRight="@+id/linearLayout"
-        android:layout_alignEnd="@+id/linearLayout"
-        android:text="Width" />
+        android:layout_alignEnd="@+id/linearLayout" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextd"
-        android:text="Depth"
+        android:id="@+id/editTextL"
         android:layout_below="@+id/gridLayout3"
-        android:layout_alignLeft="@+id/editTextw"
-        android:layout_alignStart="@+id/editTextw"
-        android:layout_alignRight="@+id/editTextw"
-        android:layout_alignEnd="@+id/editTextw" />
+        android:layout_alignLeft="@+id/editTextW"
+        android:layout_alignStart="@+id/editTextW"
+        android:layout_alignRight="@+id/editTextW"
+        android:layout_alignEnd="@+id/editTextW"
+        android:hint="length" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
-        android:text="Weight"
-        android:layout_above="@+id/buttonCalculate"
-        android:layout_alignLeft="@+id/editTextd"
-        android:layout_alignStart="@+id/editTextd"
-        android:layout_marginBottom="40dp"
-        android:layout_alignRight="@+id/editTextd"
-        android:layout_alignEnd="@+id/editTextd" />
+        android:id="@+id/editTextWT"
+        android:hint="weight"
+        android:layout_below="@+id/editTextL"
+        android:layout_alignLeft="@+id/editTextL"
+        android:layout_alignStart="@+id/editTextL"
+        android:layout_alignRight="@+id/editTextL"
+        android:layout_alignEnd="@+id/editTextL" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editTexth"
-        android:layout_above="@+id/editText4"
-        android:layout_toLeftOf="@+id/buttonCalculate"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_alignStart="@+id/editText4"
-        android:text="Height" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/txtResult"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/spinnerSource"
+        android:layout_alignRight="@+id/buttonCalculate"
+        android:layout_alignEnd="@+id/buttonCalculate" />
 
 </RelativeLayout>
