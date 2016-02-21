@@ -27,7 +27,7 @@
         android:layout_column="0"
         android:layout_marginTop="84dp"
         android:spinnerMode="dialog"
-        android:background="#fefef5" />
+        android:background="#3bff123b" />
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
         android:layout_above="@+id/gridLayout3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="#f9f6ff" />
+        android:background="#51fd003c" />
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -80,7 +80,9 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Source"
-            android:id="@+id/textView" />
+            android:id="@+id/textView"
+            android:textColor="#070607"
+            android:focusableInTouchMode="false" />
     </LinearLayout>
 
     <TextView
@@ -91,18 +93,20 @@
         android:id="@+id/textView2"
         android:layout_alignBottom="@+id/gridLayout"
         android:layout_alignLeft="@+id/spinnerDest"
-        android:layout_alignStart="@+id/spinnerDest" />
+        android:layout_alignStart="@+id/spinnerDest"
+        android:textColor="#090907" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editTextW"
         android:layout_alignBottom="@+id/gridLayout3"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout"
         android:hint="Width"
         android:layout_alignRight="@+id/linearLayout"
-        android:layout_alignEnd="@+id/linearLayout" />
+        android:layout_alignEnd="@+id/linearLayout"
+        android:background="#530a0b0a"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -113,7 +117,9 @@
         android:layout_alignStart="@+id/editTextW"
         android:layout_alignRight="@+id/editTextW"
         android:layout_alignEnd="@+id/editTextW"
-        android:hint="length" />
+        android:hint="length"
+        android:layout_alignParentStart="true"
+        android:background="#74969696" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -124,16 +130,19 @@
         android:layout_alignLeft="@+id/editTextL"
         android:layout_alignStart="@+id/editTextL"
         android:layout_alignRight="@+id/editTextL"
-        android:layout_alignEnd="@+id/editTextL" />
+        android:layout_alignEnd="@+id/editTextL"
+        android:background="#77677664" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/txtResult"
+        android:background="#ff1f34"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/spinnerSource"
-        android:layout_alignRight="@+id/buttonCalculate"
-        android:layout_alignEnd="@+id/buttonCalculate" />
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout"
+        android:layout_alignRight="@+id/spinnerDest"
+        android:layout_alignEnd="@+id/spinnerDest" />
 
 </RelativeLayout>

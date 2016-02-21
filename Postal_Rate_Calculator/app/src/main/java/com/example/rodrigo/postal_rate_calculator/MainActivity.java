@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(conditionToPass) {
           double widht_new = Double.parseDouble(width);
-          double length_new = Double.parseDouble(width);
-          double weight_new = Double.parseDouble(width);
+          double length_new = Double.parseDouble(length);
+          double weight_new = Double.parseDouble(weight);
 
             calculatorController(widht_new,length_new,weight_new,destinationLocation);
 
@@ -107,10 +108,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-     public static boolean checkWidth(String w, TextView v1) {
-
+     public  boolean checkWidth(String w, TextView v1) {
+         TextView t1 = (TextView)findViewById(R.id.txtResult);
          if(w.length() == 0){
              v1.setError("Your parameter is empty");
+             t1.setText("Your package is invalid!");
              return false;
          }
          try{
@@ -119,13 +121,16 @@ public class MainActivity extends AppCompatActivity {
          }
          catch(Exception e){
             v1.setError("You must provide a number");
+             t1.setText("Your package is invalid!");
              return false;
          }
      }
 
-    public static boolean checkLength(String l, TextView v2){
+    public  boolean checkLength(String l, TextView v2){
+        TextView t1 = (TextView)findViewById(R.id.txtResult);
         if(l.length() == 0){
             v2.setError("Your parameter is empty");
+            t1.setText("Your package is invalid!");
             return false;
         }
         try{
@@ -134,28 +139,35 @@ public class MainActivity extends AppCompatActivity {
         }
         catch(Exception e){
             v2.setError("You must provide a number");
+            t1.setText("Your package is invalid!");
             return false;
         }
 
     }
 
-    public static boolean checkHeight(String h, TextView v3) {
+    public  boolean checkHeight(String h, TextView v3) {
+        TextView t1 = (TextView)findViewById(R.id.txtResult);
         if (h.length() == 0) {
             v3.setError("Your parameter is empty");
+            t1.setText("Your package is invalid!");
             return false;
         }
         try {
             Double.parseDouble(h);
             return true;
+
         } catch (Exception e) {
             v3.setError("You must provide a number");
+            t1.setText("Your package is invalid!");
             return false;
         }
     }
 
-    public static boolean checkWeight(String w,TextView v4 ){
+    public  boolean checkWeight(String w,TextView v4 ){
+        TextView t1 = (TextView)findViewById(R.id.txtResult);
         if(w.length() == 0){
             v4.setError("Your parameter is empty");
+            t1.setText("Your package is invalid!");
             return false;
         }
         try{
@@ -164,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch(Exception e){
             v4.setError("You must provide a number");
+            t1.setText("Your package is invalid!");
             return false;
         }
 
@@ -172,18 +185,20 @@ public class MainActivity extends AppCompatActivity {
     //*******This part calculates the rate*****//
     public void calculatorController(double w, double l, double wgt, String dest){
         TextView t1 = (TextView)findViewById(R.id.txtResult);
-        isStandard(w, l, wgt);
-        isValid(w, l, wgt);
+        isStandard(w, l,0, wgt);
+        isValid(w, l,0, wgt);
+        //***************THIS IS WHERE THE RATE WILL BE SHOWN TO THE USER***************************//
         if (valid) {
             rate = rateCalculator(wgt, standard, dest);
-            t1.setText(Double.toString(rate));
+            t1.setText("$"+Double.toString(rate));
             System.out.println(rate);
         } else {
+
            t1.setText("Your package is invalid!");
         }
     }
 
-    public void isStandard(double w, double h, double wgt) {
+    public void isStandard(double w, double h, double d, double wgt) {
         if (h < 140 || h > 245) {
             standard = false;
         } else if (w < 90 || w > 156) {
@@ -196,8 +211,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void isValid(double w, double h, double wgt) {
-        if (h > 380 || w > 270 || wgt > 500) {
+    public void isValid(double w, double h,double d, double wgt) {
+        if (h > 380 || w > 270 || wgt > 500 || h < 140 ||wgt < 3 || w < 90  ) {
             valid = false;
         } else {
             valid = true;
@@ -227,43 +242,40 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } else if (dest == "United States") {
-            if (standard) {
-                if (wgt <= 30) {
-                    rate = 1.20;
-                } else {
-                    rate = 1.80;
+                if (standard) {
+                    if (wgt <= 30) {
+                      rate = 1.20;
+                    } else {
+                      rate = 1.80;
                 }
             } else {
-                if (wgt <= 100) {
-                    rate = 2.95;
+                    if (wgt <= 100) {
+                        rate = 2.95;
                 } else if (wgt > 100 && wgt <= 200) {
-                    rate = 5.15;
+                        rate = 5.15;
                 } else if (wgt > 200 && wgt <= 500) {
-                    rate = 10.30;
+                        rate = 10.30;
                 }
             }
-        } else if (dest == "International") {
+           } else if (dest == "International") {
             if (standard) {
-                if (wgt <= 30) {
-                    rate = 2.50;
+                        if (wgt <= 30) {
+                        rate = 2.50;
                 } else {
-                    rate = 3.60;
+                        rate = 3.60;
                 }
             } else {
                 if (wgt <= 100) {
-                    rate = 5.90;
+                       rate = 5.90;
                 } else if (wgt > 100 && wgt <= 200) {
-                    rate = 10.30;
+                       rate = 10.30;
                 } else if (wgt > 200 && wgt <= 500) {
-                    rate = 20.60;
+                       rate = 20.60;
                 }
             }
         }
         return rate;
     }
-
-
-
 
 
 }
